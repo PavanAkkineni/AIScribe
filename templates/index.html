@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIscribe - Medical Transcription & Summarization</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏥 AIscribe</h1>
+            <p class="subtitle">Medical Transcription & Intelligent Summarization</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Audio Input Section -->
+            <div class="card">
+                <h2>📝 Audio Input</h2>
+                
+                <div class="input-methods">
+                    <!-- Record Audio -->
+                    <div class="method-card">
+                        <h3>🎙️ Record Conversation</h3>
+                        <div class="recording-controls">
+                            <button id="recordBtn" class="btn btn-primary">
+                                <span id="recordIcon">⏺</span> Start Recording
+                            </button>
+                            <button id="stopBtn" class="btn btn-secondary" disabled>
+                                ⏹ Stop Recording
+                            </button>
+                        </div>
+                        <div id="recordingStatus" class="status-message"></div>
+                        <div id="audioPreview"></div>
+                    </div>
+
+                    <div class="divider">OR</div>
+
+                    <!-- Upload Audio -->
+                    <div class="method-card">
+                        <h3>📁 Upload Audio File</h3>
+                        <div class="upload-area" id="uploadArea">
+                            <input type="file" id="fileInput" accept="audio/*,.wav,.mp3,.mp4,.m4a,.flac,.ogg,.webm" hidden>
+                            <div class="upload-content">
+                                <p>📎 Drag & drop an audio file here</p>
+                                <p>or</p>
+                                <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">
+                                    Browse Files
+                                </button>
+                            </div>
+                            <p class="supported-formats">Supported: WAV, MP3, MP4, M4A, FLAC, OGG, WEBM</p>
+                        </div>
+                        <div id="uploadStatus" class="status-message"></div>
+                    </div>
+                </div>
+
+                <!-- Process Button -->
+                <div class="process-section">
+                    <button id="processBtn" class="btn btn-success btn-large" disabled>
+                        🚀 Process Audio
+                    </button>
+                </div>
+            </div>
+
+            <!-- Processing Logs -->
+            <div class="card" id="logsSection" style="display: none;">
+                <h2>📊 Processing Logs</h2>
+                <div id="logsContent" class="logs-container"></div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="card" id="resultsSection" style="display: none;">
+                <h2>✅ Results</h2>
+                
+                <!-- Conversation Transcript -->
+                <div class="result-card">
+                    <h3>💬 Conversation Transcript</h3>
+                    <div id="conversationText" class="content-box"></div>
+                </div>
+
+                <!-- Clinical Summary -->
+                <div class="result-card">
+                    <h3>🏥 Clinical Summary</h3>
+                    
+                    <div class="summary-section">
+                        <h4>Chief Complaint</h4>
+                        <div id="chiefComplaint" class="content-box"></div>
+                    </div>
+
+                    <div class="summary-section">
+                        <h4>History of Present Illness</h4>
+                        <div id="historyPresentIllness" class="content-box"></div>
+                    </div>
+
+                    <div class="summary-section">
+                        <h4>Assessment/Plan</h4>
+                        <div id="assessmentPlan" class="content-box"></div>
+                    </div>
+                </div>
+
+                <!-- Medical Decision Making -->
+                <div class="result-card">
+                    <h3>📋 Medical Decision Making</h3>
+                    <div id="mdmSummary" class="content-box mdm-content"></div>
+                </div>
+
+                <!-- Model Information -->
+                <div class="model-info">
+                    <p><strong>Clinical Summary Model:</strong> <span id="clinicalModel"></span></p>
+                    <p><strong>MDM Summary Model:</strong> <span id="mdmModel"></span></p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>AIscribe - Powered by AssemblyAI & OpenRouter AI Models</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
+
+
+

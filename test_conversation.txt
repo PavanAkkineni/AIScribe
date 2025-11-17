@@ -1,0 +1,39 @@
+# Test Conversation Example
+# You can use this as a reference for what the system expects
+
+doctor: Good morning! How are you doing today?
+
+patient: Good morning, doctor. I'm not feeling well. I've had a high fever for the past three days.
+
+doctor: I see. Can you tell me more about your symptoms? What's your temperature been like?
+
+patient: It's been around 102 to 103 degrees Fahrenheit. I also have some body aches and a slight runny nose.
+
+doctor: Any other symptoms like cough, sore throat, or difficulty breathing?
+
+patient: Just a mild cough occasionally, nothing too severe.
+
+doctor: Okay. Have you taken any medication for the fever?
+
+patient: Yes, I've been taking Tylenol, but it only helps temporarily.
+
+doctor: I understand. Based on your symptoms, it appears you have a severe fever with mild cold symptoms. Let me examine you quickly. *pauses* Your vitals look okay aside from the elevated temperature. This could be a viral infection, but I want to ensure we manage this properly.
+
+patient: What should I do, doctor?
+
+doctor: I'm going to prescribe you some medications. First, Doro 150 for the fever - take it twice daily. Then Cyprosine for any allergic reactions or to help with the cold symptoms. I'll also prescribe Indolo-160 for inflammation and pain, and Citrogen for immune support.
+
+patient: Okay, thank you doctor.
+
+doctor: However, given the severity of your fever, I'd recommend you also see another physician for a more comprehensive evaluation and possibly some blood work to rule out any bacterial infections.
+
+patient: Should I come back if it doesn't get better?
+
+doctor: Yes, definitely. If your fever persists beyond three more days or gets worse, please return immediately. For now, these medications should help manage your symptoms. Make sure to rest well and stay hydrated.
+
+patient: Thank you so much, doctor. I'll follow your advice.
+
+doctor: You're welcome. Take care and feel better soon!
+
+
+

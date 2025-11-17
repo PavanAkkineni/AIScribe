@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - AIscribe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+</head>
+<body>
+    <div class="auth-container">
+        <!-- Header -->
+        <header class="auth-header">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="20" r="18" fill="#2563eb" stroke="#fff" stroke-width="2"/>
+                    <path d="M15 20 L18 23 L25 16" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="logo-text">AIscribe<sup>™</sup></span>
+            </div>
+            <nav class="auth-nav">
+                <a href="/pricing">Pricing</a>
+                <a href="/login">Login</a>
+                <a href="/signup" class="btn-signup-nav">Sign Up</a>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <div class="auth-content">
+            <!-- Left Side - Marketing -->
+            <div class="auth-left">
+                <div class="marketing-content">
+                    <h1 class="marketing-title">
+                        The future of<br>
+                        medical<br>
+                        documentation<br>
+                        starts here.
+                    </h1>
+                    <div class="phone-mockup">
+                        <div class="phone-device">
+                            <div class="phone-screen">
+                                <div class="phone-header">
+                                    <span class="back-arrow">← BACK</span>
+                                </div>
+                                <div class="phone-content">
+                                    <div class="patient-name">Jonathan Smith</div>
+                                    <div class="patient-subtitle">Your patient since 2023</div>
+                                    <div class="note-text">
+                                        <p style="font-size: 10px; line-height: 1.4; color: #666;">
+                                            Chief Complaint: Fever<br><br>
+                                            History of Present Illness:<br>
+                                            The patient presents with severe fever...<br>
+                                            Medications recommended include Doro 150...
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mic-button">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="#2563eb">
+                                    <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+                                    <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side - Form -->
+            <div class="auth-right">
+                <div class="form-container">
+                    <form id="signupForm" class="auth-form">
+                        <div class="form-row">
+                            <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
+                            <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
+                        </div>
+                        
+                        <input type="email" id="email" name="email" placeholder="pavanakkineni333@gmail.com" required>
+                        
+                        <input type="password" id="password" name="password" placeholder="••••••••••" required>
+                        
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <span>I agree to the <a href="#">Terms of Service & HIPAA Agreement</a>, <a href="#">BAA</a>, and <a href="#">Privacy Policy</a></span>
+                            </label>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <label class="checkbox-label checked">
+                                <input type="checkbox" id="newsletter" name="newsletter" checked>
+                                <span>Sign Up for newsletter to keep up-to-date with new features</span>
+                            </label>
+                        </div>
+                        
+                        <div id="errorMessage" class="error-message" style="display: none;"></div>
+                        
+                        <button type="submit" class="btn-primary">Sign Up</button>
+                        
+                        <div class="divider">
+                            <span>OR</span>
+                        </div>
+                        
+                        <button type="button" class="btn-google">
+                            <svg width="18" height="18" viewBox="0 0 18 18">
+                                <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/>
+                                <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"/>
+                                <path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707s.102-1.167.282-1.707V4.961H.957C.347 6.175 0 7.55 0 9s.348 2.825.957 4.039l3.007-2.332z"/>
+                                <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.961L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/>
+                            </svg>
+                            SIGN UP WITH GOOGLE
+                        </button>
+                        
+                        <div class="form-footer">
+                            Already have an account? <a href="/login">Login Here</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='auth.js') }}"></script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ recording.title }} - AIscribe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='chat-assistant.css') }}">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-left">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="20" r="18" fill="#2563eb" stroke="#fff" stroke-width="2"/>
+                    <path d="M15 20 L18 23 L25 16" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="logo-text">AIscribe<sup>™</sup></span>
+            </div>
+        </div>
+        <nav class="header-nav">
+            <a href="#">Blog</a>
+            <a href="/" class="active">Recordings</a>
+            <a href="#">Templates</a>
+            <a href="#">Account</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+
+    <!-- Trial Banner -->
+    <div class="trial-banner">
+        <div class="trial-content">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2"/>
+                <path d="M12 6v6l4 2" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span class="trial-text">AIscribe Advanced Trial</span>
+        </div>
+        <div class="trial-progress">
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 70%;"></div>
+            </div>
+            <span class="trial-days">9 days remaining in your trial</span>
+        </div>
+        <button class="btn-choose-plan">Choose a Plan</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="detail-content">
+        <button class="btn-back" onclick="window.location.href='/'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M19 12H5M5 12l7 7M5 12l7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Back to recordings
+        </button>
+
+        <div class="recording-header">
+            <div>
+                <h1 class="recording-title">{{ recording.title }}</h1>
+                <p class="recording-meta">{{ recording.date }} • {{ recording.duration }}</p>
+            </div>
+            <div class="recording-status">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#10b981">
+                    <circle cx="12" cy="12" r="10" fill="#10b981"/>
+                    <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span>{{ recording.duration }}</span>
+            </div>
+        </div>
+
+        <!-- Conversation Transcript -->
+        <div class="content-section">
+            <h2 class="section-title">Conversation Transcript</h2>
+            <div class="transcript-box">
+                <pre>{{ recording.conversation_text }}</pre>
+            </div>
+        </div>
+
+        <!-- Clinical Summary -->
+        <div class="content-section">
+            <h2 class="section-title">Clinical Summary</h2>
+            
+            <div class="summary-card">
+                <h3>Chief Complaint</h3>
+                <p>{{ recording.clinical_summary.chief_complaint }}</p>
+            </div>
+
+            <div class="summary-card">
+                <h3>History of Present Illness</h3>
+                <p>{{ recording.clinical_summary.history_of_present_illness }}</p>
+            </div>
+
+            <div class="summary-card">
+                <h3>Assessment/Plan</h3>
+                <p>{{ recording.clinical_summary.assessment_plan }}</p>
+            </div>
+        </div>
+
+        <!-- MDM & Coding -->
+        <div class="content-section">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="mdm">MDM & CODING</button>
+                <button class="tab-btn" data-tab="guidelines">Suggested Guidelines</button>
+            </div>
+
+            <div class="tab-content active" id="mdm-tab">
+                <div class="mdm-box">
+                    <pre>{{ recording.mdm_summary }}</pre>
+                </div>
+            </div>
+
+            <div class="tab-content" id="guidelines-tab">
+                <div class="guidelines-box">
+                    <p>Suggested guidelines will appear here.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button class="btn-action" onclick="copyAll()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                COPY ALL
+            </button>
+            <button class="btn-action" onclick="window.print()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2" stroke="currentColor" stroke-width="2"/>
+                    <rect x="6" y="14" width="12" height="8" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                Print
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                btn.classList.add('active');
+                const tabId = btn.dataset.tab + '-tab';
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Copy all function
+        function copyAll() {
+            const content = document.querySelector('.detail-content').innerText;
+            navigator.clipboard.writeText(content).then(() => {
+                alert('Content copied to clipboard!');
+            });
+        }
+    </script>
+    <script src="{{ url_for('static', filename='chat-assistant.js') }}"></script>
+</body>
+</html>
+
