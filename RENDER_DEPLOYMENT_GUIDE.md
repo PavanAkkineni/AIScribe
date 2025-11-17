@@ -81,14 +81,41 @@ Click **"Add Environment Variable"** for each one:
    - **Value**: `your_openai_api_key_here`
    - Get your key from: https://platform.openai.com/api-keys
 
+### Email Configuration (Required for Email Features):
+
+5. **Variable Name**: `EMAIL_USERNAME`
+   - **Value**: `your_email@gmail.com`
+   - Your Gmail address
+
+6. **Variable Name**: `EMAIL_PASSWORD`
+   - **Value**: `your_gmail_app_password`
+   - Gmail App Password (not your regular password)
+   - Generate at: https://myaccount.google.com/apppasswords
+
+7. **Variable Name**: `EMAIL_FROM_NAME`
+   - **Value**: `AIscribe Medical Team`
+   - Display name for sent emails
+
+8. **Variable Name**: `EMAIL_SMTP_SERVER`
+   - **Value**: `smtp.gmail.com`
+
+9. **Variable Name**: `EMAIL_SMTP_PORT`
+   - **Value**: `587`
+
+10. **Variable Name**: `EMAIL_IMAP_SERVER`
+    - **Value**: `imap.gmail.com`
+
+11. **Variable Name**: `EMAIL_IMAP_PORT`
+    - **Value**: `993`
+
 > **💡 Important:** Use your actual API key values from your local `.env` file. Never commit these keys to version control!
 
 ### Optional (But Recommended):
 
-5. **Variable Name**: `PYTHON_VERSION`
-   - **Value**: `3.11.0`
+12. **Variable Name**: `PYTHON_VERSION`
+    - **Value**: `3.11.0`
 
-6. **Variable Name**: `SECRET_KEY`
+13. **Variable Name**: `SECRET_KEY`
    - **Value**: Generate a secure random key (you can use: https://randomkeygen.com/)
 
 ---

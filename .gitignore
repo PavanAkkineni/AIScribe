@@ -30,7 +30,7 @@ instance/
 # Environment
 .env
 .venv
-config.py
+
 
 
 # Uploads and logs
@@ -39,9 +39,6 @@ uploads/
 
 # User data
 users.json
-
-# Email credentials
-email_config.py
 
 # IDE
 .vscode/
