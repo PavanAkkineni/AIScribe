@@ -30,4 +30,6 @@ services:
         value: imap.gmail.com
       - key: EMAIL_IMAP_PORT
         value: 993
+      - key: UPLOAD_FOLDER
+        value: /var/data/uploads
 

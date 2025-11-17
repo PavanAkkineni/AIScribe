@@ -67,10 +67,55 @@ PYTHON_VERSION=3.11.0
 SECRET_KEY=your_random_secret_key_here
 ```
 
+### For Persistent File Storage (Recommended):
+```
+UPLOAD_FOLDER=/app/uploads
+```
+
+> **Note:** You'll also need to create a Railway Volume (see Step 3.5 below)
+
 ### ⚠️ Important Notes:
 - Copy **exact values** from your `.env` file (no extra spaces)
 - For Gmail, use an **App Password**, not your regular password
 - Generate Gmail App Password: https://myaccount.google.com/apppasswords
+
+---
+
+## Step 3.5: Add Persistent Storage (Highly Recommended)
+
+By default, Railway uses ephemeral storage (files deleted on restart). Add a volume for permanent storage:
+
+### Create Railway Volume:
+
+1. In your service, go to **"Settings"** tab
+2. Scroll down to **"Volumes"** section
+3. Click **"+ New Volume"**
+4. Configure:
+   - **Mount Path**: `/app/uploads`
+   - **Name**: `aiscribe-uploads` (optional)
+   - **Size**: Start with `1 GB` (auto-scales)
+5. Click **"Add Volume"**
+
+### Add Environment Variable:
+
+Go back to **"Variables"** tab and add:
+```
+UPLOAD_FOLDER=/app/uploads
+```
+
+Railway will automatically redeploy with persistent storage.
+
+**Benefits:**
+- ✅ Files persist across restarts
+- ✅ Recording history preserved
+- ✅ Only ~$0.25/GB/month
+
+**Without Volume:**
+- ⚠️ Files deleted on restart/redeploy
+- ⚠️ Recording history lost
+- ✅ Still works for testing
+
+See `RAILWAY_VOLUME_SETUP.md` for detailed instructions.
 
 ---
 
@@ -223,6 +268,7 @@ To use your own domain:
 
 Before deploying, verify you've added all these variables:
 
+### Required:
 - [ ] `ASSEMBLYAI_API_KEY`
 - [ ] `OPENROUTER_API_KEY`
 - [ ] `OPENROUTER_API_KEY_BACKUP`
@@ -234,8 +280,16 @@ Before deploying, verify you've added all these variables:
 - [ ] `EMAIL_SMTP_PORT`
 - [ ] `EMAIL_IMAP_SERVER`
 - [ ] `EMAIL_IMAP_PORT`
-- [ ] `PYTHON_VERSION` (optional)
-- [ ] `SECRET_KEY` (optional but recommended)
+
+### Optional but Recommended:
+- [ ] `PYTHON_VERSION` (3.11.0)
+- [ ] `SECRET_KEY` (random secure key)
+- [ ] `UPLOAD_FOLDER` (/app/uploads) + Railway Volume
+
+### Persistent Storage Setup:
+- [ ] Created Railway Volume
+- [ ] Mount path set to `/app/uploads`
+- [ ] Added `UPLOAD_FOLDER=/app/uploads` variable
 
 ---
 

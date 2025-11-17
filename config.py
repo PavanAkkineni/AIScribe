@@ -19,7 +19,8 @@ FALLBACK_MODEL = "deepseek/deepseek-r1-distill-llama-70b:free"
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 
 # Application Configuration
-UPLOAD_FOLDER = "uploads"
+# Use environment variable for Railway volume support, fallback to local 'uploads' folder
+UPLOAD_FOLDER = os.getenv("UPLOAD_FOLDER", "uploads")
 ALLOWED_EXTENSIONS = {'wav', 'mp3', 'mp4', 'm4a', 'flac', 'ogg', 'webm'}
 MAX_FILE_SIZE = 100 * 1024 * 1024  # 100 MB
 
