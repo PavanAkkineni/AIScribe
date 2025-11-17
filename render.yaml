@@ -16,4 +16,18 @@ services:
         sync: false
       - key: OPENAI_API_KEY
         sync: false
+      - key: EMAIL_USERNAME
+        sync: false
+      - key: EMAIL_PASSWORD
+        sync: false
+      - key: EMAIL_FROM_NAME
+        value: AIscribe Medical Team
+      - key: EMAIL_SMTP_SERVER
+        value: smtp.gmail.com
+      - key: EMAIL_SMTP_PORT
+        value: 587
+      - key: EMAIL_IMAP_SERVER
+        value: imap.gmail.com
+      - key: EMAIL_IMAP_PORT
+        value: 993
 
