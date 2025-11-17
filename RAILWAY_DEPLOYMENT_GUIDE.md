@@ -81,41 +81,36 @@ UPLOAD_FOLDER=/app/uploads
 
 ---
 
-## Step 3.5: Add Persistent Storage (Highly Recommended)
+## Step 3.5: Storage Information (Optional)
 
-By default, Railway uses ephemeral storage (files deleted on restart). Add a volume for permanent storage:
+By default, Railway provides **ephemeral storage** (~8GB):
+- ✅ Files upload and process correctly
+- ✅ Included free with your plan
+- ⚠️ Files deleted on container restart/redeploy
+- ✅ **Perfect for most use cases**
 
-### Create Railway Volume:
+### Do You Need Persistent Storage?
 
-1. In your service, go to **"Settings"** tab
-2. Scroll down to **"Volumes"** section
-3. Click **"+ New Volume"**
-4. Configure:
-   - **Mount Path**: `/app/uploads`
-   - **Name**: `aiscribe-uploads` (optional)
-   - **Size**: Start with `1 GB` (auto-scales)
-5. Click **"Add Volume"**
+**You DON'T need it if:**
+- Just testing/demo
+- Audio is processed immediately
+- Results sent via email
+- Okay with files being temporary
 
-### Add Environment Variable:
+**You MIGHT need it if:**
+- Building recording archive
+- Need file history long-term
+- Compliance requires permanent storage
 
-Go back to **"Variables"** tab and add:
-```
-UPLOAD_FOLDER=/app/uploads
-```
+### If You Need Persistent Storage:
 
-Railway will automatically redeploy with persistent storage.
+**Volumes option might not be visible on all Railway plans.** Alternatives:
 
-**Benefits:**
-- ✅ Files persist across restarts
-- ✅ Recording history preserved
-- ✅ Only ~$0.25/GB/month
+1. **Check Railway Settings** → Look for "Volumes" section
+2. **Upgrade Plan** → Volumes might be on paid tiers
+3. **Use Cloud Storage** → See `RAILWAY_VOLUME_SETUP.md` for S3/Cloudinary options
 
-**Without Volume:**
-- ⚠️ Files deleted on restart/redeploy
-- ⚠️ Recording history lost
-- ✅ Still works for testing
-
-See `RAILWAY_VOLUME_SETUP.md` for detailed instructions.
+**For now, proceed without volumes - your app works great with ephemeral storage!**
 
 ---
 
