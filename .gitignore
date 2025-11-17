@@ -52,13 +52,13 @@ users.json
 Thumbs.db
 
 # Audio files
-*.wav
-*.mp3
-*.m4a
-*.flac
-*.ogg
-*.webm
-*.mp4
+# *.wav
+# *.mp3
+# *.m4a
+# *.flac
+# *.ogg
+# *.webm
+# *.mp4
 
 # Documentation files (keep only README.md and RENDER_DEPLOYMENT_GUIDE.md)
 AI_CHAT_ASSISTANT_COMPLETE.md

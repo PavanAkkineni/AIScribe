@@ -721,6 +721,8 @@ Be professional, concise, and focus on key medical information. Format with clea
             result = ai_service._call_openrouter(
                 prompt,
                 model=PRIMARY_MODEL,
+                client=ai_service.client,
+                api_key_type="Primary API",
                 max_tokens=800
             )
             
@@ -734,6 +736,8 @@ Be professional, concise, and focus on key medical information. Format with clea
             result = ai_service._call_openrouter(
                 prompt,
                 model=FALLBACK_MODEL,
+                client=ai_service.client,
+                api_key_type="Primary API",
                 max_tokens=800
             )
             
@@ -1095,6 +1099,8 @@ Always remind users to consult healthcare professionals. Be concise and evidence
             result = ai_service._call_openrouter(
                 full_prompt,
                 model=PRIMARY_MODEL,  # Uses free tier from config
+                client=ai_service.client,
+                api_key_type="Primary API",
                 max_tokens=400
             )
             if result['success']:
@@ -1108,6 +1114,8 @@ Always remind users to consult healthcare professionals. Be concise and evidence
             result = ai_service._call_openrouter(
                 full_prompt,
                 model=FALLBACK_MODEL,  # Uses free tier from config
+                client=ai_service.client,
+                api_key_type="Primary API",
                 max_tokens=400
             )
             if result['success']:
